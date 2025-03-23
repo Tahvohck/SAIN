@@ -135,10 +135,11 @@ namespace SAIN.Components.BotControllerSpace.Classes.Raycasts
             for (int i = 0; i < playerCount; i++) {
                 var player = players[i];
                 var datas = player?.OtherPlayersData.Datas;
+                if (datas == null) continue;
 
                 for (int j = 0; j < playerCount; j++) {
                     var otherPlayer = players[j];
-                    if (otherPlayer != null && datas?.TryGetValue(otherPlayer.ProfileId, out var data) == true) {
+                    if (otherPlayer != null && datas.TryGetValue(otherPlayer.ProfileId, out var data) == true) {
                         data.DistanceData.Update(otherPlayer.Position, directions[count], normals[count], distances[count]);
                     }
                     count++;

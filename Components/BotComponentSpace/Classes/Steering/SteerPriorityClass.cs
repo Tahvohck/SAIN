@@ -159,8 +159,11 @@ namespace SAIN.SAINComponent.Classes.Mover
                 if (enemy == null) {
                     return true;
                 }
-                if (Bot.Squad.SquadInfo?.PlayerPlaceChecks.TryGetValue(enemy.EnemyProfileId, out PlaceForCheck enemyPlace) == true &&
-                    enemyPlace != placeForCheck) {
+                var placeCheckDict = Bot.Squad.SquadInfo?.PlayerPlaceChecks;
+                if (placeCheckDict != null &&
+                    placeCheckDict.TryGetValue(enemy.EnemyProfileId, out PlaceForCheck enemyPlace) == true &&
+                    enemyPlace != placeForCheck
+                ) {
                     return true;
                 }
             }

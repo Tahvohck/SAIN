@@ -38,7 +38,8 @@ namespace SAIN.Plugin
 
         private static BotComponent getBotComponent(BotOwner bot)
         {
-            if (SAINBotController.Instance?.GetSAIN(bot, out BotComponent botComponent) == true)
+            var controllerInstance = SAINBotController.Instance;
+            if (controllerInstance != null &&  controllerInstance.GetSAIN(bot, out BotComponent botComponent) == true)
             {
                 return botComponent;
             }

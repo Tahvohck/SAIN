@@ -133,7 +133,8 @@ namespace SAIN
         {
             get
             {
-                if (SAINPlugin.LoadedPreset?.GlobalSettings?.Hearing?.HearingDistances.TryGetValue(AmmoCaliber, out var range) == true)
+                var hearingDict = SAINPlugin.LoadedPreset?.GlobalSettings?.Hearing.HearingDistances;
+                if (hearingDict != null && hearingDict.TryGetValue(AmmoCaliber, out var range) == true)
                 {
                     return range;
                 }
